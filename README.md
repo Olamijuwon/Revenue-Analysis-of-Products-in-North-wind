@@ -164,6 +164,7 @@ OrderYear = FORMAT('OrderCalendar'[Date],"YYYY")
 ```
 
 ## Result/Findings
+
 1 - Sales target by order month and title:
 Sales representative have been hiring the highest target $50k - 65k from Jan to march .
 Vice President hit the highest sales target In the month of April of $66k
