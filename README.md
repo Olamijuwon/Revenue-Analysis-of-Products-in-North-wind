@@ -7,10 +7,8 @@ This data project aims to provide insights into Sales improvements, which employ
 ## Tools
 
 -Power BI - Data cleaning was donee in power query
-
           - Data analysis was done too.
-          
-          -Creating reports .
+          - Creating reports .
 
 ## Data cleaning / Preparation.
 
