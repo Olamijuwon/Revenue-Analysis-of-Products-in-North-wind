@@ -154,6 +154,12 @@ DAX Measures used for the Nortwind Database
      Return Ret   
 ```
 
-
-
+``` DAX
+OrderCalendar = CALENDARAUTO()
+MonthNumber = FORMAT('OrderCalendar'[Date],"mm")
+OrderDay = FORMAT('OrderCalendar'[Date],"dd")
+OrderMonth = FORMAT('OrderCalendar'[Date],"mmm")
+OrderQuater = FORMAT('OrderCalendar'[Date],"Q")
+OrderYear = FORMAT('OrderCalendar'[Date],"YYYY")
+```
 
