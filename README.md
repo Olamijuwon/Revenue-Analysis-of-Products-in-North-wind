@@ -9,7 +9,8 @@
 ## Project Overview
 
 This data project aims to provide insights into Sales improvements, which employee is bringing in more sales and Frequent customers. By analysing various aspects of the sales data, we seek to identify trends, dada driven recommendations and gain a deeper understanding of the company's performance.
-![North-Wind Dashboard](https://github.com/Olamijuwon/Revenue-Analysis-of-Products-in-North-wind/assets/107110652/a02f5570-5a0d-4d21-b033-50fba016315b)
+![North-Wind Dashboard 2](https://github.com/Olamijuwon/Revenue-Analysis-of-Products-in-North-wind/assets/107110652/f22acc3c-a4bc-40e9-a6d2-07da66bcbd51)
+
 
 ## Tools.
 -Power BI - Data cleaning was donee in power query
