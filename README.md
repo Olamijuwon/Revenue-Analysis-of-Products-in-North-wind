@@ -37,9 +37,12 @@ DAX Measures used for the Nortwind Database
     Color = IF([Total Sales]>[Previous Month Sales], "Green", "Red")
 ```
 
-Color Sales/Target = IF([Total Sales] >= [Sales Target], "Green", "Red")
+``` DAX
+    Color Sales/Target = IF([Total Sales] >= [Sales Target], "Green", "Red")
+```
 
-KPI Color = 
+``` DAX
+    KPI Color = 
             Var Sel = SELECTEDVALUE(Comparison[Comparison Fields])
             Var cond = SWITCH(TRUE(),
                                     CONTAINSSTRING(Sel, "Target"), [Total Sales]-[Sales Target],
@@ -52,20 +55,26 @@ KPI Color =
                             "Black")
             Return 
                   ret
+```
 
 
-KPI Total Sales = FORMAT([Total Sales], "$#,0") & " "
+``` DAX
+    KPI Total Sales = FORMAT([Total Sales], "$#,0") & " "
+```
 
-KPI Total Sales Vs Budget = 
+``` DAX
+    KPI Total Sales Vs Budget = 
                 Var var1 = [Total Budget]
                 var percentage = DIVIDE([Total Sales], [Total Budget]) - 1
                 Var sign = IF([Total Sales] >= var1, "+", "")
                 Var ret = sign & FORMAT(percentage, "#0.0%") & " | " & 
                         FORMAT(var1, "#0,#")
             Return ret
+```
                           
 
-KPI Total Sales Vs Last Month = 
+``` DAX
+    KPI Total Sales Vs Last Month = 
                 Var var1 = [Previous Month Sales]
                 var percentage = DIVIDE([Total Sales], [Previous Month Sales]) - 1
                 Var sign = SWITCH(TRUE(),
@@ -74,63 +83,76 @@ KPI Total Sales Vs Last Month =
                 Var ret = sign & FORMAT(percentage, "#0.0%") & " | " & 
                         FORMAT(var1, "#0,#")
             Return ret
+```
 
 
-KPI Total Sales Vs Last Year = 
+``` DAX
+    KPI Total Sales Vs Last Year = 
                 Var var1 = [SPLY Sales]
                 var percentage = DIVIDE([Total Sales], [SPLY Sales]) - 1
                 Var sign = IF([Total Sales] >= var1, "+", "")
                 Var ret = sign & FORMAT(percentage, "#0.0%") & " | " & 
                         FORMAT(var1, "#0,#")
             Return ret
+```
 
 
-KPI Total Sales Vs Tartget = 
+``` DAX
+    KPI Total Sales Vs Tartget = 
                 Var var1 = [Sales Target]
                 var percentage = DIVIDE([Total Sales], [Sales Target]) - 1
                 Var sign = IF([Total Sales] >= var1, "+", "")
                 Var ret = sign & FORMAT(percentage, "#0.0%") & " | " & 
                         FORMAT(var1, "#0,#")
             Return ret
+```
 
+``` DAX
+    Monthly % Share = DIVIDE([Total Sales],[Total Sales For The Year], 0)
+```
 
-Monthly % Share = DIVIDE([Total Sales],[Total Sales For The Year], 0)
-
-
-Previous Month Sales = CALCULATE([Total Sales], PREVIOUSMONTH(OrderCalendar[Date]))
-
-
-Sales Target = SWITCH(TRUE(),
+``` DAX
+   Previous Month Sales = CALCULATE([Total Sales], PREVIOUSMONTH(OrderCalendar[Date]))
+```
+ 
+ ``` DAX
+     Sales Target = SWITCH(TRUE(),
                             [Total Sales] >= 100000 && [Total Sales] <= 200000, [Total Sales]/2,
                             [Total Sales] < 1000000, [Total Sales]+20000,
                             [Total Sales] > 200000, [Total Sales]-5000)
-                        
+  ```                      
                       
 
 
-SPLY Sales = CALCULATE([Total Sales], SAMEPERIODLASTYEAR(OrderCalendar[Date]))
+``` DAX
+    SPLY Sales = CALCULATE([Total Sales], SAMEPERIODLASTYEAR(OrderCalendar[Date]))
+```
 
-
-Total Budget = SWITCH(TRUE(),
+``` DAX
+    Total Budget = SWITCH(TRUE(),
                             [Total Sales] >= 100000 && [Total Sales] <= 200000, [Total Sales]*2,
                             [Total Sales] < 1000000, [Total Sales]+50000,
                             [Total Sales] > 200000, [Total Sales]+10000)
+```
 
+``` DAX
+    Total Sales = SUM(Orders[SalesAmount])
+```
 
-Total Sales = SUM(Orders[SalesAmount])
+``` DAX
+   Total Sales For The Year = CALCULATE([Total Sales], REMOVEFILTERS(OrderCalendar[MonthNumber], OrderCalendar[OrderMonth]))
+```
 
+``` DAX
+   Total Sales YTD = CALCULATE([Total Sales], DATESYTD(OrderCalendar[Date]))
+```
 
-Total Sales For The Year = CALCULATE([Total Sales], REMOVEFILTERS(OrderCalendar[MonthNumber], OrderCalendar[OrderMonth]))
-
-
-Total Sales YTD = CALCULATE([Total Sales], DATESYTD(OrderCalendar[Date]))
-
-
-Variance = 
+``` DAX
+    Variance = 
         Var Vari = DIVIDE([Total Sales], [Previous Month Sales]) - 1
         Var Ret = FORMAT(Vari, "#%") & " " & IF(Vari > 0, "(+)", "(-)")
      Return Ret   
-
+```
 
 
 
