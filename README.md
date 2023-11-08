@@ -19,3 +19,18 @@ Initial data preparation phase;
 - Deleting of empty coloumns and removing of columns not needed for analysis.
 - Data cleaning and formatting.
   - - Creating of Calendar Date Auto and connecting it to the date column in the data model.
+
+## Exploratory Data ANalysis
+
+Key questions;
+-Showing Total sales by budget, last month, last year , last target this was done using Dax.
+-Showing sales by continent.
+-What is the average Sales Amount by Employee?
+-Show sales representative that hits the highest target.
+-Sales target by order month and title.
+
+## Data Analysyis
+
+
+
+
