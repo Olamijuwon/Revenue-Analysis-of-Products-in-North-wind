@@ -7,7 +7,9 @@ This data project aims to provide insights into Sales improvements, which employ
 ## Tools
 
 -Power BI - Data cleaning was donee in power query
+
           - Data analysis was done too.
+          
           -Creating reports .
 
 ## Data cleaning / Preparation.
@@ -16,4 +18,4 @@ Initial data preparation phase;
 - Data loading and inspection.
 - Deleting of empty coloumns and removing of columns not needed for analysis.
 - Data cleaning and formatting.
-- - Creating of Calendar Date Auto and connecting it to the date column in the data model.
+  - - Creating of Calendar Date Auto and connecting it to the date column in the data model.
