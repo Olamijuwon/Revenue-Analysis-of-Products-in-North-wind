@@ -30,6 +30,107 @@ Key questions
 ## Data Analysyis
 
 
+DAX Measures used for the Nortwind Database
+
+
+``` DAX
+    Color = IF([Total Sales]>[Previous Month Sales], "Green", "Red")
+```
+
+Color Sales/Target = IF([Total Sales] >= [Sales Target], "Green", "Red")
+
+KPI Color = 
+            Var Sel = SELECTEDVALUE(Comparison[Comparison Fields])
+            Var cond = SWITCH(TRUE(),
+                                    CONTAINSSTRING(Sel, "Target"), [Total Sales]-[Sales Target],
+                                    CONTAINSSTRING(sel, "Budget"), [Total Sales]- [Total Budget],
+                                    CONTAINSSTRING(sel, "Last Month"), [Total Sales]-[Previous Month Sales], 
+                                    CONTAINSSTRING(sel, "Last Year"), [Total Sales]-[SPLY Sales])
+            var ret = SWITCH(TRUE(),
+                            cond >= 0, "Green",
+                            cond < 0, "Red",
+                            "Black")
+            Return 
+                  ret
+
+
+KPI Total Sales = FORMAT([Total Sales], "$#,0") & " "
+
+KPI Total Sales Vs Budget = 
+                Var var1 = [Total Budget]
+                var percentage = DIVIDE([Total Sales], [Total Budget]) - 1
+                Var sign = IF([Total Sales] >= var1, "+", "")
+                Var ret = sign & FORMAT(percentage, "#0.0%") & " | " & 
+                        FORMAT(var1, "#0,#")
+            Return ret
+                          
+
+KPI Total Sales Vs Last Month = 
+                Var var1 = [Previous Month Sales]
+                var percentage = DIVIDE([Total Sales], [Previous Month Sales]) - 1
+                Var sign = SWITCH(TRUE(),
+                                        [Total Sales] >= var1, "+",
+                                          "")
+                Var ret = sign & FORMAT(percentage, "#0.0%") & " | " & 
+                        FORMAT(var1, "#0,#")
+            Return ret
+
+
+KPI Total Sales Vs Last Year = 
+                Var var1 = [SPLY Sales]
+                var percentage = DIVIDE([Total Sales], [SPLY Sales]) - 1
+                Var sign = IF([Total Sales] >= var1, "+", "")
+                Var ret = sign & FORMAT(percentage, "#0.0%") & " | " & 
+                        FORMAT(var1, "#0,#")
+            Return ret
+
+
+KPI Total Sales Vs Tartget = 
+                Var var1 = [Sales Target]
+                var percentage = DIVIDE([Total Sales], [Sales Target]) - 1
+                Var sign = IF([Total Sales] >= var1, "+", "")
+                Var ret = sign & FORMAT(percentage, "#0.0%") & " | " & 
+                        FORMAT(var1, "#0,#")
+            Return ret
+
+
+Monthly % Share = DIVIDE([Total Sales],[Total Sales For The Year], 0)
+
+
+Previous Month Sales = CALCULATE([Total Sales], PREVIOUSMONTH(OrderCalendar[Date]))
+
+
+Sales Target = SWITCH(TRUE(),
+                            [Total Sales] >= 100000 && [Total Sales] <= 200000, [Total Sales]/2,
+                            [Total Sales] < 1000000, [Total Sales]+20000,
+                            [Total Sales] > 200000, [Total Sales]-5000)
+                        
+                      
+
+
+SPLY Sales = CALCULATE([Total Sales], SAMEPERIODLASTYEAR(OrderCalendar[Date]))
+
+
+Total Budget = SWITCH(TRUE(),
+                            [Total Sales] >= 100000 && [Total Sales] <= 200000, [Total Sales]*2,
+                            [Total Sales] < 1000000, [Total Sales]+50000,
+                            [Total Sales] > 200000, [Total Sales]+10000)
+
+
+Total Sales = SUM(Orders[SalesAmount])
+
+
+Total Sales For The Year = CALCULATE([Total Sales], REMOVEFILTERS(OrderCalendar[MonthNumber], OrderCalendar[OrderMonth]))
+
+
+Total Sales YTD = CALCULATE([Total Sales], DATESYTD(OrderCalendar[Date]))
+
+
+Variance = 
+        Var Vari = DIVIDE([Total Sales], [Previous Month Sales]) - 1
+        Var Ret = FORMAT(Vari, "#%") & " " & IF(Vari > 0, "(+)", "(-)")
+     Return Ret   
+
 
 
 
