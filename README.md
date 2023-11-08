@@ -1,5 +1,9 @@
 # Revenue-Analysis-of-Products-in-North-wind
 
+- [Project Overview](#project-overview)
+- [Tools](#tools)
+- [ Data Cleaning/Preparation](#data-cleaning/preparation)
+- [Exploratory Data Analysis](#exploratory-data-analysis)
 ## Project Overview
 
 This data project aims to provide insights into Sales improvements, which employee is bringing in more sales and Frequent customers. By analysing various aspects of the sales data, we seek to identify trends, dada driven recommendations and gain a deeper understanding of the company's performance.
@@ -10,7 +14,7 @@ This data project aims to provide insights into Sales improvements, which employ
           - Data analysis was done too.
           - Creating reports .
 
-## Data cleaning / Preparation.
+## Data Cleaning/Preparation
 
 Initial data preparation phase;
 - Data loading and inspection.
@@ -18,7 +22,7 @@ Initial data preparation phase;
 - Data cleaning and formatting.
   - - Creating of Calendar Date Auto and connecting it to the date column in the data model.
 
-## Exploratory Data ANalysis
+## Exploratory Data Analysis
 
 Key questions
 - Showing Total sales by budget, last month, last year , last target this was done using Dax.
