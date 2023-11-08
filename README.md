@@ -163,3 +163,25 @@ OrderQuater = FORMAT('OrderCalendar'[Date],"Q")
 OrderYear = FORMAT('OrderCalendar'[Date],"YYYY")
 ```
 
+## Result/Findings
+1 - Sales target by order month and title:
+Sales representative have been hiring the highest target $50k - 65k from Jan to march .
+Vice President hit the highest sales target In the month of April of $66k
+
+2 - Sales representative hit the highest target from $46k to $109k from May to Dec .
+There was a dip in June ($46k), This may be due to mid of the year and less purchases are made , more promotional sales can be made to improve sales.
+The Sales representative hitting the highest target is understandably as they are the ones in the fore front meeting with customers.
+
+3 - Average Sales Amount by Employee
+To know the employee bringing in more sales Average gives a better representation than sum because of outliers.
+Margaret brings the highest sales
+And Steven the least sales
+
+4 - Sales by Continent
+North America brings the highest sales, this is visible due to their large population and stable economy , followed by Europe and South America the least.
+By Country :
+USA topping the chart ($263k)
+Germany ($241k)
+Austria ($139k)
+The least being Poland at $5k.
+
